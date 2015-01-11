@@ -8,11 +8,15 @@ class StocksController < ApplicationController
     end
 
     def create
+
         @item = Stock.new(stock_params)
-        if @item.save
+        @existingItem = Stock.find_by(item: @item.item)
+        if @existingItem
+            @existingItem.update(count: stock_params[:count], rebuy: stock_params[:rebuy])
             redirect_to stocks_path
         else
-            render 'new'
+            @item.save
+            redirect_to stocks_path
         end
     end
 
