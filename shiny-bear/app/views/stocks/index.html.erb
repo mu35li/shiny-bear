@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Kühlschrank</h1>
+    <table class="table">
+        <tr>
+            <th>Item</th>
+            <th>Anzahl</th>
+            <th>muss eingekauft werden</th>
+        </tr>
+        <% @item.each do |item| %>
+            <tr>
+                <td><%= link_to item.item, item %></td>
+                <td><%= item.count %></td>
+                <td><% if item.rebuy %>
+                        <span>Ja</span>
+                    <% else %>
+                        <spawn>Nein</spawn>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    <%= link_to "new item", {action: "new"} , class: "btn btn-success" %>
+</div>

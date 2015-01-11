@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Show stock</h1>
+    <p>
+        <table class="table">
+            <tr>
+                <th>Artikel</th>
+                <th>Anzahl</th>
+                <th>Muss neugekauft werden</th>
+            </tr>
+            <tr>
+                <td><%= @item.item %></td>
+                <td><%= @item.count %></td>
+                <td><%= @item.rebuy %></td>
+            </tr>
+        </table>
+    </p>
+
+    <%= link_to "Zurück zur Übersicht", stocks_path, class: "btn btn-primary" %>
+</div>
