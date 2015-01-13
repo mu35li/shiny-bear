@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :shopping_lists
+  resources :list_items
   resources :stocks
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

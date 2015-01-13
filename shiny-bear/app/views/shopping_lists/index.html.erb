@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>The Shoppinglists</h1>
+    <table class="table">
+        <tr>
+            <th>Listen Nummer</th>
+            <th>Aktiv</th>
+            <th>Aktionen</th>
+        </tr>
+    <% @list.each do |list| %>
+        <tr>
+            <td><%= link_to list.id, list %></td>
+            <td><% if list.active %>
+                    <span>Ja</span>
+                <% else %>
+                    <spawn>Nein</spawn>
+                <% end %>
+            </td>
+            <td><%= link_to "Bearbeiten", list, method: :delete, class: "btn btn-warning" %> <%= link_to "Löschen", list, method: :delete,
+          class: "btn btn-danger"%></td>
+        </tr>
+    <% end %>
+    </table>
+    <br>
+    <br>
+    <%= link_to "New List", {action: "new"}, class: "btn btn-success" %>
+    <br> <br>
+
+    <%= link_to "back to home", {controller: :welcome}, class: "btn btn-primary" %>
+</div>

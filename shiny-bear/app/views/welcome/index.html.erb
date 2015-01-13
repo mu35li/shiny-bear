@@ -1,2 +1,6 @@
-<h1>Welcome#index</h1>
-<%= link_to "The Stock", :controller => "stocks"  %>
+<div class="container">
+    <h1>Welcome to shiny-bear</h1>
+    <p>You can either view whats in the fridge or create a new shopping list</p>
+    <%= link_to "Whats in the fridge", stocks_path  %> <br>
+    <%= link_to "Shopping Lists", shopping_lists_path %> 
+</div>

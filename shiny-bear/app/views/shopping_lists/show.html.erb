@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Liste nummer <%= @list.id %></h1>
+    <p>
+        Diese Liste ist zurzeit 
+        <% if @list.active %>
+            aktiv
+        <% else %>
+            inaktiv
+        <% end %>
+        <table class="table">
+            <tr>
+                <th>Item</th>
+                <th>Anzahl</th>
+                <th>dringend</th>
+            </tr>
+            <% @listitem.each do |item| %>
+            <tr>
+                <td> item.item</td>
+                <td>item.count</td>
+                <td>item.important</td>
+            </tr>
+            <% end %>
+        </table>
+        <br> <br>
+        <%= link_to "Zurück zur Übersicht", shopping_lists_path, class: "btn btn-primary" %>
+    </p>
+</div>

@@ -1,3 +1,3 @@
 class Stock < ActiveRecord::Base
-    validates :item, presence: true
+    validates :item, :count, presence: true
 end
