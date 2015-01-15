@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Neu im Kühlschrank</h1>
+    <% if @item.errors.any? %>
+        <div class="alert alter-danger" role="alert">
+            
+            <strong>error hier...</strong>
+        </div>
+    <% end %>
+    <%= form_for :list_items, url: list_items_path do |form| %>
+        <p>
+            <%= form.label :Artikel %> <br>
+            <%= form.text_field :item %> <br>
+        </p>
+        <p>
+            <%= form.label :Anzahl %> <br>
+            <%= form.number_field :count %> <br>
+        </p>
+        <p>
+            <%= form.label :dringend %> <br>
+            <%= form.check_box :important %> <br>
+            <%= form.hidden_field :list_id, :value => @item.list_id %>
+        </p>
+        <p>
+            <%= form.submit :Speichern %>
+        </p>
+    <% end %>
+    <br>
+
+    <%= link_to "zurück", shopping_lists_path, class: "btn btn-primary" %>
+</div>

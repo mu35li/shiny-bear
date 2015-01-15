@@ -13,14 +13,23 @@
                 <th>Anzahl</th>
                 <th>dringend</th>
             </tr>
-            <% @listitem.each do |item| %>
-            <tr>
-                <td> item.item</td>
-                <td>item.count</td>
-                <td>item.important</td>
-            </tr>
-            <% end %>
+           <% @item.each do |item| %>
+               <tr>
+                   <td><%= link_to item.item, item %></td>
+                   <td><%= item.count %></td>
+                   <td><% if item.important %>
+                           <span>Ja</span>
+                       <% else %>
+                           <spawn>Nein</spawn>
+                       <% end %>
+                   </td>
+                   <td><%= link_to "Bearbeiten", item, method: :delete, class: "btn btn-warning" %> <%= link_to "Löschen", item, method: :delete,
+                 class: "btn btn-danger"%></td>
+               </tr>
+           <% end %> 
         </table>
+        <br> <br>
+        <%= link_to "Neues Item" , new_list_item_path(list_id: @list), class: "btn btn-success" %>
         <br> <br>
         <%= link_to "Zurück zur Übersicht", shopping_lists_path, class: "btn btn-primary" %>
     </p>

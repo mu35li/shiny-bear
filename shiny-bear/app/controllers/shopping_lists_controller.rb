@@ -5,6 +5,7 @@ class ShoppingListsController < ApplicationController
     def new
 
         @list = ShoppingList.new(:active => true)
+
         if @list.save
             redirect_to @list
         else
@@ -21,6 +22,6 @@ class ShoppingListsController < ApplicationController
 
     def show
         @list = ShoppingList.find(params[:id])
-        @listitem = ListItem.find_by(belongs_to: @list)
+        @item = ListItem.where(:list_id => @list.id)
     end
 end

@@ -21,7 +21,12 @@ class StocksController < ApplicationController
     end
 
     def show
-        @item = Stock.find(params[:id])
+        begin
+           @item = Stock.find(params[:id])     
+           render 'show'
+        rescue => e
+            redirect_to stocks_path
+        end
     end
 
     def update
