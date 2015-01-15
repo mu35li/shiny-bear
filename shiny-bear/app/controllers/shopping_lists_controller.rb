@@ -7,6 +7,12 @@ class ShoppingListsController < ApplicationController
         @list = ShoppingList.new(:active => true)
 
         if @list.save
+
+            @neededItems = Stock.where(:rebuy => true)
+            @neededItems.each do |item|
+                @importantItem = ListItem.new(:item => item.item, :count => item.count, :important => true, :list_id => @list.id)
+                @importantItem.save
+            end
             redirect_to @list
         else
             render shopping_lists_path 
