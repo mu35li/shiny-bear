@@ -10,7 +10,7 @@ class ShoppingListsController < ApplicationController
 
             @neededItems = Stock.where(:rebuy => true)
             @neededItems.each do |item|
-                @importantItem = ListItem.new(:item => item.item, :count => item.count, :important => true, :list_id => @list.id)
+                @importantItem = ListItem.new(:item => item.item, :count => 1, :important => true, :list_id => @list.id)
                 @importantItem.save
             end
             redirect_to @list
